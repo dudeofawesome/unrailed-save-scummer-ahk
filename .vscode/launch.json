@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "autohotkey",
+      "request": "launch",
+      "name": "AutoHotkey Debug",
+      "program": "${file}",
+      "args": [],
+      "stopOnEntry": false,
+      "useDebugDirective": true,
+      "usePerfTips": true,
+      "openFileOnExit": "${file}",
+      "internalConsoleOptions": "openOnSessionStart",
+      "trace": false
+    },
+    {
+      "name": "AutoHotkey_H Debug",
+      "request": "launch",
+      "type": "autohotkey",
+      "runtime_v1": "h/AutoHotkey.exe",
+      "runtime_v2": "h/v2/AutoHotkey.exe",
+      "program": "${file}",
+      "args": [],
+      "stopOnEntry": false,
+      "maxChildren": 10000
+    }
+  ]
+}
