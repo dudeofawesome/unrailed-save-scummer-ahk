@@ -23,12 +23,12 @@ jobs:
           Expand-Archive -LiteralPath ./mpress.zip -DestinationPath ./ahk/Compiler/
 
       - name: Build
-        run: >-
-          ./ahk/Compiler/Ahk2Exe.exe
-            /in "./unrailed-save-scummer.ahk"
-            /out "./unrailed-save-scummer.exe"
-            /icon "./assets/icon.ico"
-            /bin "./ahk/Compiler/Unicode 64-bit.bin"
+        run: |
+          ./ahk/Compiler/Ahk2Exe.exe `
+            /in "./unrailed-save-scummer.ahk" `
+            /out "./unrailed-save-scummer.exe" `
+            /icon "./assets/icon.ico" `
+            /bin "./ahk/Compiler/Unicode 64-bit.bin" `
             /compress 1
 
       - name: lsdir
