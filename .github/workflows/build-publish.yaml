@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - run: git fetch origin +refs/tags/*:refs/tags/*
 
       - name: Install Dependencies
         run: ./install_deps.ps1
