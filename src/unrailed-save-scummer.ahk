@@ -9,6 +9,7 @@ EnvGet, LocalAppData, LOCALAPPDATA
 save_game_dir := LocalAppData . "\Daedalic Entertainment GmbH\Unrailed\GameState\AllPlayers\SaveGames"
 last_time_save_loaded := 0
 last_event_time := 0
+debounce_ms := 1000
 
 WatchDirectory(save_game_dir . "\|.sav", "onSaveDetected")
 
@@ -16,11 +17,12 @@ onSaveDetected(old_filepath, new_filepath) {
   global save_game_dir
   global last_time_save_loaded
   global last_event_time
+  global debounce_ms
 
   backups_dir := save_game_dir . "\backups"
 
   ; naïvely check that this isn't a duplicate event
-  if (last_event_time + 2000 < A_TickCount) {
+  if (last_event_time + debounce_ms < A_TickCount) {
     ; make sure it's actually a savegame
     if (!RegExMatch(old_filepath, "SLOT\d+\.sav") and !RegExMatch(new_filepath, "SLOT\d+\.sav")) {
       Return
@@ -30,7 +32,7 @@ onSaveDetected(old_filepath, new_filepath) {
       ; new file is being created (what an awful interface)
 
       ; naïvely check that we didn't cause this event
-      if (last_time_save_loaded + 2000 < A_TickCount) {
+      if (last_time_save_loaded + debounce_ms < A_TickCount) {
         SplitPath, new_filepath, basename, , extension, filename
 
         TrayTip, New Save Detected, %basename%
@@ -51,7 +53,7 @@ onSaveDetected(old_filepath, new_filepath) {
       SplitPath, old_filepath, basename, , extension, filename
 
       ; wait a little bit just to make sure the game doesn't do anything funky
-      Sleep, 1000
+      Sleep, debounce_ms / 2
 
       if (FileExist(backups_dir . "\" . filename . "-0." . extension)) {
         FileCopy, %backups_dir%\%filename%-0.%extension%, %save_game_dir%\%filename%.%extension%, 0
