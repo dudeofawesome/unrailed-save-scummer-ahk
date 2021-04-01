@@ -18,7 +18,7 @@ jobs:
       - name: Install Dependencies
         run: |
           $client = new-object System.Net.WebClient
-          $client.DownloadFile("https://autohotkey.com/download/ahk.zip")
+          $client.DownloadFile("https://autohotkey.com/download/ahk.zip", "ahk.zip")
           Compress-Archive -LiteralPath ./ahk.zip -DestinationPath ./ahk
 
       - name: Build
