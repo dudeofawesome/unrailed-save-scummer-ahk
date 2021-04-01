@@ -35,7 +35,7 @@ onSaveDetected(old_filepath, new_filepath) {
       if (last_time_save_loaded + debounce_ms < A_TickCount) {
         SplitPath, new_filepath, basename, , extension, filename
 
-        TrayTip, New Save Detected, %basename%
+        TrayTip, New Save Detected, %filename%
 
         ; create backups dir if it doesn't exist
         if (!FileExist(backups_dir)) {
@@ -57,6 +57,7 @@ onSaveDetected(old_filepath, new_filepath) {
 
       if (FileExist(backups_dir . "\" . filename . "-0." . extension)) {
         FileCopy, %backups_dir%\%filename%-0.%extension%, %save_game_dir%\%filename%.%extension%, 0
+        TrayTip, Save Replaced, %filename%
       }
     }
   }
