@@ -1,12 +1,6 @@
 name: Build and Publish to GH Releases
 
-on:
-  push:
-    # branches:
-    #   - master
-    # # Publish `v1.2.3` tags as releases.
-    # tags:
-    #   - v*
+on: push
 
 jobs:
   build-and-publish:
@@ -14,7 +8,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - run: git fetch origin +refs/tags/*:refs/tags/*
 
       - name: Install Dependencies
         run: ./install_deps.ps1
