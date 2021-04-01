@@ -21,6 +21,11 @@ onSaveDetected(old_filepath, new_filepath) {
 
   ; naïvely check that this isn't a duplicate event
   if (last_event_time + 2000 < A_TickCount) {
+    ; make sure it's actually a savegame
+    if (!RegExMatch(old_filepath, "SLOT\d+\.sav") and !RegExMatch(new_filepath, "SLOT\d+\.sav")) {
+      Return
+    }
+
     if ((!old_filepath and !!new_filepath) or old_filepath = new_filepath) {
       ; new file is being created (what an awful interface)
 
