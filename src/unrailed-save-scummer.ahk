@@ -63,7 +63,7 @@ onSaveDetected(old_filepath, new_filepath) {
 }
 
 rotateSaves(dir, filename, extension) {
-  max_saves := 5
+  max_saves := 5 - 1
 
   oldest_save := dir . "\" . filename . "-" . max_saves . "." . extension
   if (FileExist(oldest_save)) {
