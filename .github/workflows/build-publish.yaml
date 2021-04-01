@@ -23,3 +23,7 @@ jobs:
       - name: Build
         run: >-
           ./ahk/Compiler/Ahk2Exe.exe /in "./unrailed-save-scummer.ahk" /out "./unrailed-save-scummer.exe" /icon "./assets/icon.ico" /bin "./ahk/Compiler/AutoHotkeySC.bin" /compress 1
+
+      - name: lsdir
+        run: |
+          Get-ChildItem
