@@ -1,5 +1,7 @@
 # [Unrailed!](https://unrailed-game.com/) Save Scummer
 
+![hero image](/assets/social-preview.png)
+
 Unrailed deletes saves immediately after loading them, so this program backs
 them up and replaces them upon deletion.
 
