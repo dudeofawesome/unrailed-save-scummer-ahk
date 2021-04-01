@@ -18,11 +18,18 @@ jobs:
       - name: Install Dependencies
         run: |
           Invoke-WebRequest -Uri "https://autohotkey.com/download/ahk.zip" -OutFile "ahk.zip"
+          Invoke-WebRequest -Uri "https://web.archive.org/web/20150511220826if_/http://www.matcode.com/mpress.219.zip" -OutFile "mpress.zip"
           Expand-Archive -LiteralPath ./ahk.zip -DestinationPath ./ahk
+          Expand-Archive -LiteralPath ./mpress.zip -DestinationPath ./ahk/Compiler/
 
       - name: Build
         run: >-
-          ./ahk/Compiler/Ahk2Exe.exe /in "./unrailed-save-scummer.ahk" /out "./unrailed-save-scummer.exe" /icon "./assets/icon.ico" /bin "./ahk/Compiler/AutoHotkeySC.bin" /compress 1
+          ./ahk/Compiler/Ahk2Exe.exe
+            /in "./unrailed-save-scummer.ahk"
+            /out "./unrailed-save-scummer.exe"
+            /icon "./assets/icon.ico"
+            /bin "./ahk/Compiler/Unicode 64-bit.bin"
+            /compress 1
 
       - name: lsdir
         run: |
