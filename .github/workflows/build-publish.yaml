@@ -31,6 +31,10 @@ jobs:
             /bin "./ahk/Compiler/Unicode 64-bit.bin" `
             /compress 1
 
-      - name: lsdir
-        run: |
-          Get-ChildItem
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: unrailed-save-scummer.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
