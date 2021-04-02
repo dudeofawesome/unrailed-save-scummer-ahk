@@ -5,6 +5,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #MaxThreadsPerHotkey 2 ; Allows the hotkey to toggle the reader
 #Persistent ; Keeps the script running in the background
 
+;@Ahk2Exe-SetName Unrailed Save Scummer
+;@Ahk2Exe-SetCopyright Louis Orleans
+
 EnvGet, LocalAppData, LOCALAPPDATA
 save_game_dir := LocalAppData . "\Daedalic Entertainment GmbH\Unrailed\GameState\AllPlayers\SaveGames"
 last_time_save_loaded := 0
