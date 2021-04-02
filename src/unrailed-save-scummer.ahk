@@ -4,6 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #MaxThreadsPerHotkey 2 ; Allows the hotkey to toggle the reader
 #Persistent ; Keeps the script running in the background
+#ErrorStdOut
 
 ;@Ahk2Exe-SetName Unrailed Save Scummer
 ;@Ahk2Exe-SetCopyright Louis Orleans
