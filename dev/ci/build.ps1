@@ -35,6 +35,7 @@ function Wait-FileChange {
   /in ".\src\unrailed-save-scummer.ahk" `
   /out ".\$OUTPUT" `
   /icon ".\assets\icon.ico" `
+  /bin "$(Get-Location)\lib\ahk\Compiler\AutoHotkeySC.bin" `
   /compress 1
 if ($LASTEXITCODE -ne 0) { throw "Exit code is $LASTEXITCODE" }
 
